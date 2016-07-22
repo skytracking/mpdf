@@ -406,17 +406,17 @@ class cssmgr
 			preg_match_all('/url\(\"(.*?)\"\)/', $html, $m);
 			for ($i = 0; $i < count($m[1]); $i++) {
 				$tmp = str_replace(array('(', ')', ';'), array('%28', '%29', $tempmarker), $m[1][$i]);
-				$html = preg_replace('/' . preg_quote($m[0][$i], '/') . '/', 'url(\'' . $tmp . '\')', $html);
+				$html = str_replace($m[0][$i], 'url(\'' . $tmp . '\')', $html);
 			}
 			preg_match_all('/url\(\'(.*?)\'\)/', $html, $m);
 			for ($i = 0; $i < count($m[1]); $i++) {
 				$tmp = str_replace(array('(', ')', ';'), array('%28', '%29', $tempmarker), $m[1][$i]);
-				$html = preg_replace('/' . preg_quote($m[0][$i], '/') . '/', 'url(\'' . $tmp . '\')', $html);
+                $html = str_replace($m[0][$i], 'url(\'' . $tmp . '\')', $html);
 			}
 			preg_match_all('/url\(([^\'\"].*?[^\'\"])\)/', $html, $m);
 			for ($i = 0; $i < count($m[1]); $i++) {
 				$tmp = str_replace(array('(', ')', ';'), array('%28', '%29', $tempmarker), $m[1][$i]);
-				$html = preg_replace('/' . preg_quote($m[0][$i], '/') . '/', 'url(\'' . $tmp . '\')', $html);
+                $html = str_replace($m[0][$i], 'url(\'' . $tmp . '\')', $html);
 			}
 		}
 		//Fix incomplete CSS code
